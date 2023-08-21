@@ -73,3 +73,27 @@ C++11被认为是最经典的C++标准。
 ## 二、安装与设置(Installation and Setup)
 
 课程采用 CodeLite 进行开发，所以跳过。
+
+
+## 三、课程预览(Curriculum Overview)
+
+### 1. 课程预览
+
+- 入门 (Getting Started)
+- C++程序结构 (Structure of a C++ Program)
+- 变量与常量 (Variables and Constants)
+- 数组与向量 (Array and Vectors)
+- C++中的字符串 (Strings in C++)
+- 表达式、语句与运算符 (Expressions, Statements and Operators)
+- 语句与运算符 (Statements and Operators)
+- 流程控制 (Determining Control Flow)
+- 函数 (Functions)
+- 指针与引用 (Pointers and References)
+- 类与对象 (OOP - Classes and Objects)
+- 操作符重载 (Operator Overloading)
+- 继承 (Inheritance)
+- 多态 (Polymorphism)
+- 智能指针 (Smart Pointers)
+- 标准模板库 (The Standard Template Library, STL)
+- 输入输出流 (I/O Streams)
+- 异常处理 (Exception Handling)
