@@ -72,8 +72,13 @@ C++11被认为是最经典的C++标准。
 
 ## 二、安装与设置(Installation and Setup)
 
-课程采用 CodeLite 进行开发，所以跳过。
+### 1. 安装 MinGW-w64 编译器
 
+进入网站 **https://winlibs.com/**，选择 `Download` 页面，下载最新 GCC 版本的 Win64包。
+
+将下载好的包解压到C盘目录中，并将 `C:\mingw64\bin` 目录添加至环境变量中。
+
+打开命令行窗口输入命令 `g++ --version` 查看是否配置正确。
 
 ## 三、课程预览(Curriculum Overview)
 
@@ -97,3 +102,94 @@ C++11被认为是最经典的C++标准。
 - 标准模板库 (The Standard Template Library, STL)
 - 输入输出流 (I/O Streams)
 - 异常处理 (Exception Handling)
+
+## 四、开始(Getting Started)
+
+### 1. 编写我们的第一个程序
+
+```cpp
+#include <iostream>
+
+int main() {
+    int favorite_number;
+    std::cout << "Enter your favorite number between 1 and 100: ";
+    std::cin >> favorite_number;
+    std::cout << "Amazing!! " << favorite_number << " That's my favorite number too!"; 
+    return 0;
+}
+```
+
+### 2. 编译错误
+
+- 编程语言对如何编写代码有非常具体的规则，以便编译器可以将代码转换为机器代码。
+- 语法错误
+- 语义错误
+
+例如 C++ 中所有的语句都必须以分号结尾，否则将报错。
+```cpp
+return 0
+```
+
+又比如说在C++中双引号是成对出现的，如果缺少了一个双引号也将会报错。
+```cpp
+std::cout << "Hello << std::endl;
+```
+
+
+### 3. 编译器警告
+
+- 编译器注意到代码的潜在问题，会发出警告。
+- 它只是一个警告，编译器仍然能够理解代码并从中生成目标代码。
+
+如果定义了一个变量，而没有使用它，或者没有进行初始化，编译器都将会发出一条警告。
+```cpp
+int miles_driven;
+std::cout << miles_driven;
+```
+### 4. 链接器错误(Linker Errors)
+
+- 链接器在将所有的目标文件链接在一起以创建一个可执行的文件。
+- 通常有一个库或目标文件丢失了将会引发错误。
+
+如果定义一个外部变量，编译main.cpp文件时将会错误，因为在编译链接时找不到x变量。
+```cpp
+#include <iostream>
+
+extern int x;
+
+int main() {
+    std::cout << "Hello world" << std::endl;
+    std::cout << x;
+    return 0;
+}
+```
+
+### 5. 运行时错误(Runtime Errors)
+
+- 运行时错误是程序执行时发生的错误。
+- 一些典型的运行时错误：除以零错误、文件未找到错误、内存不足错误 ...
+
+### 6. 逻辑错误(Logic Errors)
+
+- 代码中导致程序运行不正确的错误或bug。
+- 逻辑错误是程序员所犯的错误。
+
+### 7. 章节挑战
+
+创建一个C++程序，要求用户输入他们最喜欢的1到100之间的数字，然后从控制台读取这个数字。
+
+=======================================
+
+创建一个C++程序，要求用户输入1到100之间的数字，然后从控制台读取这个数字
+
+假设用户输入24，然后在控制台显示以下内容：
+
+Amazing!! That's my favorite number too!
+No really!!, 24 my favorite number!
+
+下面是该程序的两个运行示例：
+
+=======================================
+Enter your favorite number betweeen 1 and 100: 24
+Amazing!! That's my favorite number too!
+No really!!, 24 my favorite number!
