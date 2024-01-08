@@ -135,7 +135,6 @@ return 0
 std::cout << "Hello << std::endl;
 ```
 
-
 ### 3. 编译器警告
 
 - 编译器注意到代码的潜在问题，会发出警告。
@@ -193,3 +192,180 @@ No really!!, 24 my favorite number!
 Enter your favorite number betweeen 1 and 100: 24
 Amazing!! That's my favorite number too!
 No really!!, 24 my favorite number!
+
+## 五、C++程序结构(Structure of a C++ Program)
+
+### 1. 课程预览
+
+C++程序结构
+- 基础组件
+- 预处理指令(preprocessor directives)
+- 主函数(main function)
+- 命名空间(namespace)
+- 注释
+- 基础I/O
+
+### 2. C++程序结构
+
+可以在 [CPP Reference](https://zh.cppreference.com/w/cpp/keyword) 网站中查看C++所有的关键字。
+
+![C++ 关键字](Resources\section5\images\cppkeywords.png)
+
+在 C++ 中共有90个关键字，Java有50个，Python有33个，C语言32个，而Go只有25个关键词。
+
+C++中有各种标点符号、运算符等，当把这些元素放在程序中时，形成了一个叫做语法的东西(syntex)。
+
+语法是编程语言的语法，能够让编译器理解的结构和含义，编译器通过编写的代码将其翻译成机器代码。
+
+### 3. #include 预处理器指令
+
+预处理器指令(Preprocessor Directives)
+- 什么是预处理器？
+    - C++预处理器是一个在编译器执行之前处理源代码的程序。
+    - C++预处理器首先从源文件中删除所有注释并用空格将其替换，然后查找所有预处理器指令并执行。
+    - 预处理器指令在源代码中以`#`符号开头。
+- 是做什么用的？
+    - 预处理器指令通常用于有条件地编译代码。
+    - 例如：只想在Windows系统中编译源代码的一部分。
+- 指令以#开头
+- 预处理器的命令
+    - C++预处理器不理解C++代码，它只遵循预处理器指令，并为编译器准备好源代码，编译器是理解C++的程序。
+
+| #include |  |  |  |  |
+| -- | -- | -- | -- | -- |
+| #ifdef | #ifndef | #define | undef |
+| #if | #elif | #else | #endif |
+| line | error | pragma |
+
+### 4. 注释
+
+注释是源代码中程序员可读的解释，注释并不会被编译器执行，预处理器会先去除掉所有的注释。
+
+C++有两种注释方式，一种是单行注释，使用 `//` 开头后面的一整行都被认为是注释内容，另一种是多行注释，以`/*`开头以`*/`结尾，在这之中的内容都被视为注释内容。
+
+### 5. main 函数
+
+- 每个C++程序必须有**1**个`main()`函数。
+- `main()`函数是程序的起点。
+- 返回0表示程序执行成功。
+
+
+```cpp
+int main() 
+{
+    // 代码
+    return 0;
+}
+
+program.exe
+```
+
+带参数main函数。
+```cpp
+int main(int argc, char *argv[]) {
+    // 代码
+    return 0;
+} 
+
+program.exe argument1 argument2
+```
+
+### 6. 命名空间
+
+- 为什么使用 `std::cout` 而不仅仅是 `cout` ？
+    - C++允许开发人员使用命名空间作为容器，将它们的代码实体分组到名空间范围内。
+- 什么是命名冲突？
+- 为部分代码指定名称，以帮助减少命名冲突。
+- `std`是**C++标准**命名空间的名称。
+- 第三方框架将有自己的命名空间。
+- 作用域解析运算符`::`。
+- 我们怎样才能使用这些命名空间呢？
+
+使用 `using namespace` 命名空间指令，将指定的命名空间下的所有函数导出出来。
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    int favorite_number;
+    cout << "Enter your favorite number between 1 and 100: ";
+    cin >> favorite_number;
+    cout << "Amazing!! " << favorite_number << " That's my favorite number too!"; 
+    cout << "No really!!, " << favorite_number << " is my favorite number!" << endl;
+
+    return 0;
+}
+```
+
+使用命名空间变体限定
+
+```cpp
+#include <iostream>
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+
+    int favorite_number;
+    cout << "Enter your favorite number between 1 and 100: ";
+    cin >> favorite_number;
+    cout << "Amazing!! " << favorite_number << " That's my favorite number too!"; 
+    cout << "No really!!, " << favorite_number << " is my favorite number!" << endl;
+
+    return 0;
+}
+```
+
+### 7. 基础输入和输出(I/O)
+
+`cin`, `cout`, `cerr` 和 `clog` 是表示流的对象。
+
+- cin
+    - 标准输入流
+    - 键盘
+- cout
+    - 标准输出流
+    - 控制台
+- `>>`
+    - 提取操作符
+    - 输入流
+- `<<`
+    - 插入操作符
+    - 输出流
+
+#### cin 和 >>
+
+根据数据的类型从cin流中提取数据。
+```cpp
+cin >> data;
+```
+
+可以被链式调用。
+```cpp
+cin >> data1 >> data2;
+```
+
+如果无法解释输入的数据，则可能失败（数据可能具有未确定的值）。
+
+
+#### cout 和 <<
+
+插入数据到`cout`流中。
+```cpp
+cout << data;
+```
+
+可以被链式调用。
+```cpp
+cout << "data 1 is " << data1;
+```
+
+不会自动添加换行符。
+```cpp
+cout << "data 1 is " << data1 << endl;
+cout << "data 1 is " << data1 << "\n";
+```
