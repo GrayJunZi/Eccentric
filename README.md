@@ -568,3 +568,230 @@ const int months_in_year {12};
 
 pi = 2.5; // 编译错误
 ```
+
+## 七、数组与向量(Arrays and Vectors)
+
+- 什么是数组？
+- 我们为什么使用数组？
+- 如何声明与初始化数组？
+- 如何访问数组中的元素？
+- 多维数组？
+- 什么是向量？
+- 向量对比数组有什么优势？
+- 向量如何声明并初始化？
+
+### 1. 什么是数组？
+
+- 数组是复合数据类型或者数据结构（元素的集合）。
+- 数组中所有的元素都是相同的类型。
+- 每个元素都可以被直接访问。
+
+我们为什么需要数组？
+
+假设我们存储学生的成绩，那么就要定义非常多的成绩变量，此时操作起来就很不方便。
+
+```cpp
+int test_score_1 {0};
+int test_score_2 {0};
+int test_score_3 {0};
+...
+int test_score_100 {0};
+```
+
+数组的特性(Characteristics)
+
+- 数组的大小是固定的。
+- 所有元素都是相同的数据类型。
+- 在内存中连续(contiguously)存储。
+- 可以通过数组下标(位置索引)来访问单个元素。
+- 第一个元素的索引是 0。
+- 最后一个元素的索引是索引大小-1。
+- 不检查自己是否越界。
+- 始终初始化数组。
+- 效率很高。
+- 常用于处理迭代(循环)。
+
+### 2. 数组的声明与初始化
+
+**数组的声明**
+
+```cpp
+int test_scores [5];
+int high_score_per_level [10];
+
+const int days_in_years{365};
+double hi_temperatures [days_in_year];
+```
+
+**数组的初始化**
+
+```cpp
+int test_scores [5] {100,95,99,87,64};
+int high_score_per_level [10] {3,5};  // 前两个元素初始化为3和5，其他值为9
+
+const double days_in_year {365};
+double hi_temperatures [days_in_year] {0};  // 所有元素的初始值为0
+
+int another_array [] {1,2,3,4,5}; // 自动计算数组大小
+```
+
+### 3. 数组元素的访问与修改
+
+**访问数组元素**`<数组名称> [元素索引]`
+
+```cpp
+int test_scores [5] {100,95,99,87,64};
+
+cout << "First score at index 0: " << test_scores[0] << endl;
+cout << "Second score at index 1: " << test_scores[1] << endl;
+cout << "Third score at index 2: " << test_scores[2] << endl;
+cout << "Fourth score at index 3: " << test_scores[3] << endl;
+cout << "Fifth score at index 4: " << test_scores[4] << endl;
+```
+
+**修改数组元素内容** `<数组名称> [元素索引] = 值`
+
+```cpp
+int test_scores [5] {100,95,99,87,64};
+
+cin >> test_scores[0];
+cin >> test_scores[1];
+cin >> test_scores[2];
+cin >> test_scores[3];
+
+test_scores[4] = 90;
+```
+
+**数组是如何工作的？**
+
+- 数组名称用于表示数组所在内存中的位置，当使用索引 0 时指向数组中的第一个元素。
+- 当我们使用下标运算符访问数组元素并在方括号中提供索引，编译器将找到处于该位置的元素。
+
+### 4. 多维数组(Multi-dimensional arrays)
+
+**声明多维数组** `<元素类型> <数组名称> [1维大小] [2维大小]`
+
+```cpp
+int movie_rating [3][4];
+```
+
+**访问多维数组元素**
+
+```cpp
+cin >> movie_rating [1][2];
+cout << movie_rating [1][2];
+```
+
+**多维数组初始化器进行初始化**
+
+```cpp
+int movie_rating [3][4]
+{
+  {0,4,3,5},
+  {2,3,3,5},
+  {1,4,4,5}
+};
+```
+
+### 5. 向量的声明与初始化
+
+**什么是向量？**
+
+- 向量(Vector)是 C++标准模板库的一部分。
+- 向量在运行时可以动态增长或收缩大小。
+- 向量提供类似于数组的语法和语义。
+- 向量提供越界检查(bounds checking)。
+- 向量提供大量函数例如：`sort`、`reverse`、``find` 等等。
+
+**声明向量**
+
+```cpp
+#include <vector>
+
+using namespace std;
+
+vector<char> vowels;
+vector<int> test_scores;
+```
+
+**初始化向量**
+
+```cpp
+vector<char> vowels {'a','e','i','o','u'};
+vector<int> test_scores {100, 98, 89, 85, 93};
+vector<double> hi_temperatures (365, 80.0);
+```
+
+向量的特性
+- 动态大小。
+- 每个元素都是相同的类型。
+- 在内存中存储相邻的空间。
+- 可以通过下标位置访问单个元素。
+- 第一个元素下标从0开始。
+- 最后一个元素是长度-1。
+- [] - 不检查是否越界。
+- 提供了许多有用的函数，做边界检查。
+- 每个元素初始值为0。
+- 效率很高。
+- 经常用于迭代(循环)。
+
+### 6. 向量的访问与修改
+
+**访问向量元素** 
+
+(1). 数组语法 `<向量名称> [元素下标]`
+
+```cpp
+vector<int> test_scores {100,95,99,87,64};
+
+cout << "First score at index 0: " << test_scores[0] << endl;
+cout << "Second score at index 1: " << test_scores[1] << endl;
+cout << "Third score at index 2: " << test_scores[2] << endl;
+cout << "Fourth score at index 3: " << test_scores[3] << endl;
+cout << "Fifth score at index 4: " << test_scores[4] << endl;
+```
+
+(2). 向量语法 `<向量名称>.at(元素索引)`
+
+```cpp
+vector<int> test_scores {100,95,99,87,64};
+
+cout << "First score at index 0: " << test_scores.at(0) << endl;
+cout << "Second score at index 1: " << test_scores.at(1) << endl;
+cout << "Third score at index 2: " << test_scores.at(2) << endl;
+cout << "Fourth score at index 3: " << test_scores.at(3) << endl;
+cout << "Fifth score at index 4: " << test_scores.at(4) << endl;
+```
+
+**修改向量元素** `<向量名称>.at(元素索引)`
+
+```cpp
+vector<int> test_scores {100,95,99,87,64};
+
+cin >> test_scores.at0);
+cin >> test_scores.at(1);
+cin >> test_scores.at(2);
+cin >> test_scores.at(3);
+
+test_scores.at(4) = 90;
+```
+
+**向末尾追加元素** `<向量名称>.push_back(元素)`
+
+```cpp
+vector<int> test_scores {100,95,99};
+
+test_scores.push_back(80);
+test_scores.push_back(90);
+```
+
+如果越界了怎么办？
+- 数组不做边界检查。
+- 许多向量方法提供向量检查。
+- 会生成一个异常和错误信息。
+
+```cpp
+vector<int> test_scores {100,95};
+
+cin >> test_scores.at(5);
+```
